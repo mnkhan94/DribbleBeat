@@ -6,9 +6,15 @@ form(action="/quotes" method="POST")
 
 	input(type="text" placeholder="Enter Time" name="time" class="form-control")
 
-	input(type="number" placeholder="Enter Maximum Amount of Players" name="maximum" class="form-control")
+	div(class="row")
 
-	input(type="number" placeholder="Enter Minimum Amount of Players" name="minimum" class="form-control")
+		div(class="col-lg-6 col-md-6 col-sm-6 col-xs-6")
+			h3(class="text-center") Min
+			input(type="number" placeholder="Enter Minimum Amount of Players" name="minimum" class="form-control")
+
+		div(class="col-lg-6 col-md-6 col-sm-6 col-xs-6")
+			h3(class="text-center") Max
+			input(type="number" placeholder="Enter Maximum Amount of Players" name="maximum" class="form-control")
 
 	button(type="submit" class="btn btn-success btn-block") Submit
 
@@ -18,8 +24,9 @@ div
 	each game in games
 		div(data-id='"'+game._id+'"' class="col-lg-4 col-md-6 col-sm-12 text-center box")
 			div
-				h1= game.location 
-				h3= game.time
+				h3= game.location
+				hr 
+				h4= game.time
 				p Min: 
 					span= game.minimum
 				p Max: 
