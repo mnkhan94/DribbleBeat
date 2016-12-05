@@ -1,0 +1,30 @@
+body {
+	color: #2a516b;
+}
+
+.logo {
+	margin: 50px auto;
+	display: block;
+	max-width: 300px;
+}
+
+form {
+	width: 500px;
+	margin: 0 auto;
+}
+
+form .form-control {
+	margin: 15px 0;
+}
+
+.box {
+}
+
+.box div {
+	padding: 15px;
+	border: 10px solid #abdeff;
+}
+
+input[placeholder] {
+	text-align: center;
+}
