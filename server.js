@@ -24,3 +24,12 @@ app.get('/', (req, res) => {
     res.render('layout.pug', {games: result})
   })
 })
+
+app.post('/games', (req, res) => {
+  db.collection('games').save(req.body, (err, result) => {
+    if (err) return console.log(err)
+
+    console.log('saved to database')
+    res.redirect('/')
+  })
+})

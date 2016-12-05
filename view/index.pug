@@ -1,4 +1,19 @@
+h1(class="text-center") Add A Game
 
+form(action="/quotes" method="POST")
+
+	input(type="text" placeholder="Enter Location" name="location" class="form-control") 
+
+	input(type="text" placeholder="Enter Time" name="time" class="form-control")
+
+	input(type="number" placeholder="Enter Maximum Amount of Players" name="maximum" class="form-control")
+
+	input(type="number" placeholder="Enter Minimum Amount of Players" name="minimum" class="form-control")
+
+	button(type="submit" class="btn btn-success btn-block") Submit
+
+hr
+br
 div
 	each game in games
 		div(data-id='"'+game._id+'"' class="col-lg-4 col-md-6 col-sm-12 text-center box")
