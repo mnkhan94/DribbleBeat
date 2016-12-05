@@ -7,6 +7,9 @@ const pug = require('pug');
 app.set('view engine', 'pug')
 app.use(express.static('public'))
 
+app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.json())
+
 var db
 var ObjectID = require('mongodb').ObjectID;
 
@@ -19,17 +22,26 @@ MongoClient.connect('mongodb://mnkhan:testing_password@ds119578.mlab.com:19578/d
 })
 
 app.get('/', (req, res) => {
-  db.collection('games').find().toArray((err, result) => {
+  db.collection('quotes').find().toArray((err, result) => {
     if (err) return console.log(err)
     res.render('layout.pug', {games: result})
   })
 })
 
-app.post('/games', (req, res) => {
-  db.collection('games').save(req.body, (err, result) => {
+app.post('/quotes', (req, res) => {
+  db.collection('quotes').save(req.body, (err, result) => {
     if (err) return console.log(err)
 
     console.log('saved to database')
     res.redirect('/')
+  })
+})
+
+app.delete('/quotes', (req, res) => {
+  console.log(req.body.id)
+  db.collection('quotes').remove( {_id: ObjectID(req.body.id)},
+  (err, result) => {
+    if (err) return res.send(500, err)
+    res.send('Game Deleted')
   })
 })
