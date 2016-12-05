@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mnkhan94/DribbleBeat/issues"
   },
-  "homepage": "https://github.com/mnkhan94/DribbleBeat#readme"
+  "homepage": "https://github.com/mnkhan94/DribbleBeat#readme",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
 }
