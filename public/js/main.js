@@ -1,3 +1,4 @@
+$("input[name='location']").geocomplete();
 
 var del = $('.delete-this')
 

@@ -1,21 +1,20 @@
 {
   "name": "dribblebeat",
   "version": "1.0.0",
-  "description": "Project For Advanced Server Side Languages",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/mnkhan94/DribbleBeat.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/mnkhan94/DribbleBeat/issues"
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.12",
+    "whatwg-fetch": "^2.0.1"
   },
-  "homepage": "https://github.com/mnkhan94/DribbleBeat#readme",
   "devDependencies": {
     "nodemon": "^1.11.0"
   }

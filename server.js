@@ -42,6 +42,6 @@ app.delete('/quotes', (req, res) => {
   db.collection('quotes').remove( {_id: ObjectID(req.body.id)},
   (err, result) => {
     if (err) return res.send(500, err)
-    res.send('Game Deleted')
+    res.send('A darth vadar quote got deleted')
   })
 })
