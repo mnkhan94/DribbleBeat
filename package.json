@@ -1,0 +1,19 @@
+{
+  "name": "dribblebeat",
+  "version": "1.0.0",
+  "description": "Project For Advanced Server Side Languages",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mnkhan94/DribbleBeat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mnkhan94/DribbleBeat/issues"
+  },
+  "homepage": "https://github.com/mnkhan94/DribbleBeat#readme"
+}
