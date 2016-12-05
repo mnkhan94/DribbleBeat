@@ -17,3 +17,10 @@ MongoClient.connect('mongodb://mnkhan:testing_password@ds119578.mlab.com:19578/d
     console.log('listening on 3000')
   })
 })
+
+app.get('/', (req, res) => {
+  db.collection('games').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    res.render('layout.pug', {games: result})
+  })
+})
