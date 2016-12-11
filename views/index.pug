@@ -10,11 +10,11 @@ form(action="/quotes" method="POST")
 
 		div(class="col-lg-6 col-md-6 col-sm-6 col-xs-6")
 			h3(class="text-center") Min
-			input(type="number" placeholder="Enter Minimum Amount of Players" name="minimum" class="form-control")
+			input(type="number" placeholder="Enter Minimum Amount of Players" name="minimum" min="2" class="form-control")
 
 		div(class="col-lg-6 col-md-6 col-sm-6 col-xs-6")
 			h3(class="text-center") Max
-			input(type="number" placeholder="Enter Maximum Amount of Players" name="maximum" class="form-control")
+			input(type="number" placeholder="Enter Maximum Amount of Players" name="maximum" min="2" class="form-control")
 
 	button(type="submit" class="btn btn-success btn-block") Submit
 

@@ -1,5 +1,10 @@
 $("input[name='location']").geocomplete();
 
+$("input[name='minimum']").on("change", function(){
+  $("input[name='maximum']").val($(this).val());
+  $("input[name='maximum']").attr("min", $(this).val());
+})
+
 var del = $('.delete-this')
 
 del.on('click', function () {

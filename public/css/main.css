@@ -9,7 +9,7 @@ body {
 }
 
 form {
-	width: 500px;
+	max-width: 500px;
 	margin: 0 auto;
 }
 
@@ -21,10 +21,36 @@ form .form-control {
 }
 
 .box div {
-	padding: 15px;
+	margin: 15px;
+	padding: 10px;
 	border: 10px solid #abdeff;
 }
 
 input[placeholder] {
 	text-align: center;
 }
+
+.nav {
+	display: block;
+	width: 328px;
+	margin: 0 auto;
+	position: relative;
+	top: -40px;
+}
+
+.goto {
+	text-align: center;
+    display: inline-block;
+    margin: 10px;
+}
+
+.goto i {
+	color: #66BCF4
+}
+
+.goto p {
+	color: #000;
+	position: relative;
+	top: 10px;
+}
+
