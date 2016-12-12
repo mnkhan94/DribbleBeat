@@ -16,7 +16,7 @@ var del = $('.delete-this')
 del.on('click', function () {
   id = $(this).parent().parent().data("id").replace(/\"/g, "")
   console.log(id)
-  fetch('quotes', {
+  fetch('/cancel_game', {
     method: 'delete',
     headers: {
       'Content-Type': 'application/json'

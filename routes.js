@@ -9,6 +9,58 @@ module.exports = function(app, passport) {
       });
 	})
 
+    // New Game
+    app.get('/add_game', (req, res) => {
+      var Game = require('./models/game');
+      Game.find({"user_id": req.user.id}, function(err, result) {
+        if (err) throw err;
+
+        // object of all the users
+        console.log(result);
+
+        res.render('add_game.handlebars', {
+          user : req.user, // get the user out of session and pass to template
+          games: result
+        })
+      });
+    })
+
+    // Create Game
+    app.post('/add_game', (req, res) => {
+        var form = req.body
+        var Game = require('./models/game');
+        var newGame = new Game({
+            location: form.location,
+            date: form.date,
+            time: form.time,
+            minimum: form.minimum,
+            maximum: form.maximum,
+            user_id: form.user_id
+        });
+
+        newGame.save(req.body, (err, result) => {
+            if (err) return console.log(err)
+
+            res.redirect('/add_game')
+        })
+    })
+
+    // Destroy Game
+    app.delete('/cancel_game', (req, res) => {
+      console.log(req.body.id)
+      // db.collection('games').remove( {_id: ObjectID(req.body.id)},
+      // (err, result) => {
+      //   if (err) return res.send(500, err)
+      //   res.send('The Game was deleted')
+      // })
+        var Game = require('./models/game');
+        Game.remove({ _id: req.body.id },
+        (err, result) => {
+            if (err) return res.send(500, err)
+            res.send('The Game was deleted')
+        })
+    })
+
     // =====================================
     // LOGIN ===============================
     // =====================================

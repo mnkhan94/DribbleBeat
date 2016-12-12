@@ -56,30 +56,12 @@ MongoClient.connect('mongodb://mnkhan:testing_password@ds119578.mlab.com:19578/d
   })
 })
 
-app.get('/add_game', (req, res) => {
-  db.collection('games').find({"user_id": req.user.id}).toArray((err, result) => {
-    if (err) return console.log(err)
-    res.render('add_game.handlebars', {
-      user : req.user, // get the user out of session and pass to template
-      games: result
-    })
-  })
-})
 
-app.post('/games', (req, res) => {
-  db.collection('games').save(req.body, (err, result) => {
-    if (err) return console.log(err)
-
-    console.log('Saved to database')
-    res.redirect('/')
-  })
-})
-
-app.delete('/games', (req, res) => {
-  console.log(req.body.id)
-  db.collection('games').remove( {_id: ObjectID(req.body.id)},
-  (err, result) => {
-    if (err) return res.send(500, err)
-    res.send('The Game was deleted')
-  })
-})
+// app.delete('/games', (req, res) => {
+//   console.log(req.body.id)
+//   db.collection('games').remove( {_id: ObjectID(req.body.id)},
+//   (err, result) => {
+//     if (err) return res.send(500, err)
+//     res.send('The Game was deleted')
+//   })
+// })
