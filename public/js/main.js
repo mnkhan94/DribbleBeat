@@ -5,6 +5,12 @@ $("input[name='minimum']").on("change", function(){
   $("input[name='maximum']").attr("min", $(this).val());
 })
 
+$(".show-location").each(function(){
+  str = $(this).html().replace(/,/g, "<br />")
+  $(this).html(str)
+})
+
+
 var del = $('.delete-this')
 
 del.on('click', function () {

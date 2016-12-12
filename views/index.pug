@@ -2,19 +2,21 @@ h1(class="text-center") Add A Game
 
 form(action="/quotes" method="POST")
 
-	input(type="text" placeholder="Enter Location" name="location" class="form-control") 
+	input(type="text" placeholder="Enter Location" name="location" class="form-control" required) 
 
-	input(type="text" placeholder="Enter Time" name="time" class="form-control")
+	input(type="text" placeholder="Enter Date" name="date" class="form-control" required) 
+
+	input(type="text" placeholder="Enter Time" name="time" class="form-control" required)
 
 	div(class="row")
 
 		div(class="col-lg-6 col-md-6 col-sm-6 col-xs-6")
 			h3(class="text-center") Min
-			input(type="number" placeholder="Enter Minimum Amount of Players" name="minimum" min="2" class="form-control")
+			input(type="number" placeholder="Enter Minimum Amount of Players" name="minimum" min="2" class="form-control" required)
 
 		div(class="col-lg-6 col-md-6 col-sm-6 col-xs-6")
 			h3(class="text-center") Max
-			input(type="number" placeholder="Enter Maximum Amount of Players" name="maximum" min="2" class="form-control")
+			input(type="number" placeholder="Enter Maximum Amount of Players" name="maximum" min="2" class="form-control" required)
 
 	button(type="submit" class="btn btn-success btn-block") Submit
 
@@ -24,7 +26,8 @@ div
 	each game in games
 		div(data-id='"'+game._id+'"' class="col-lg-4 col-md-6 col-sm-12 text-center box")
 			div
-				h3= game.location
+				h3= game.date
+				p(class="show-location")= game.location
 				hr 
 				h4= game.time
 				p Min: 

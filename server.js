@@ -3,8 +3,11 @@ const bodyParser= require('body-parser')
 const app = express();
 const MongoClient = require('mongodb').MongoClient
 const pug = require('pug');
+const exphbs  = require('express-handlebars');
 
-app.set('view engine', 'pug')
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+
 app.use(express.static('public'))
 
 app.use(bodyParser.urlencoded({extended: true}))
@@ -24,7 +27,7 @@ MongoClient.connect('mongodb://mnkhan:testing_password@ds119578.mlab.com:19578/d
 app.get('/', (req, res) => {
   db.collection('quotes').find().toArray((err, result) => {
     if (err) return console.log(err)
-    res.render('layout.pug', {games: result})
+    res.render('index.handlebars', {games: result})
   })
 })
 
@@ -32,7 +35,7 @@ app.post('/quotes', (req, res) => {
   db.collection('quotes').save(req.body, (err, result) => {
     if (err) return console.log(err)
 
-    console.log('saved to database')
+    console.log('Saved to database')
     res.redirect('/')
   })
 })
@@ -42,6 +45,6 @@ app.delete('/quotes', (req, res) => {
   db.collection('quotes').remove( {_id: ObjectID(req.body.id)},
   (err, result) => {
     if (err) return res.send(500, err)
-    res.send('A darth vadar quote got deleted')
+    res.send('The Game was deleted')
   })
 })

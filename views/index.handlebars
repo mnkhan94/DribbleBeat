@@ -1,0 +1,61 @@
+<h1 class="text-center">
+	Add A Game
+</h1>
+
+<form action="/quotes" method="POST">
+	
+	<input type="text" placeholder="Enter Location" name="location" class="form-control" required>
+	
+	<input type="text" placeholder="Enter Date" name="date" class="form-control" required>
+
+	<input type="text" placeholder="Enter Time" name="time" class="form-control" required>
+	
+	<div class="row">
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<h3 class="text-center">
+				Min
+			</h3>
+			<input type="number" placeholder="Enter Minimum Amount of Players" name="minimum" min="2" class="form-control" required>
+		</div>
+
+		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			<h3 class="text-center">
+				Max
+			</h3>
+			<input type="number" placeholder="Enter Maximum Amount of Players" name="maximum" min="2" class="form-control" required>
+		</div>
+	</div>
+	
+	<button type="submit" class="btn btn-success btn-block">Submit</button>
+
+</form>
+
+<hr>
+<br>
+
+<div>
+	{{#each games}}
+	  <div data-id='{{this._id}}' class="col-lg-4 col-md-6 col-sm-12 text-center box">
+	  	<div>
+		  		<h3>
+		  			{{this.date}}
+		  		</h3>
+	  			<p class="show-location">
+	  				{{this.location}}
+	  			</p>
+	  			<hr>
+	  			<h4>{{this.time}}</h4>
+	  			<p>
+	  				Min: <span>{{this.minimum}}</span>
+	  			</p>
+	  			<p>
+	  				Max: <span>{{this.maximum}}</span>
+	  			</p>
+				
+				<button class="btn btn-danger delete-this">Delete</button>
+	  	</div>
+	  </div>
+	{{/each}}
+</div>
+
+<script src="js/main.js"></script>

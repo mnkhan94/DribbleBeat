@@ -26,13 +26,17 @@ form .form-control {
 	border: 10px solid #abdeff;
 }
 
+.show-location {
+	color: #5cb85c;
+}
+
 input[placeholder] {
 	text-align: center;
 }
 
 .nav {
 	display: block;
-	width: 328px;
+	width: 339px;
 	margin: 0 auto;
 	position: relative;
 	top: -40px;
