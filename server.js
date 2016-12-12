@@ -27,7 +27,15 @@ MongoClient.connect('mongodb://mnkhan:testing_password@ds119578.mlab.com:19578/d
 app.get('/', (req, res) => {
   db.collection('quotes').find().toArray((err, result) => {
     if (err) return console.log(err)
-    res.render('index.handlebars', {games: result})
+    res.render('home.handlebars', {games: result})
+  })
+})
+
+
+app.get('/add_game', (req, res) => {
+  db.collection('quotes').find().toArray((err, result) => {
+    if (err) return console.log(err)
+    res.render('add_game.handlebars', {games: result})
   })
 })
 

@@ -2,6 +2,10 @@ body {
 	color: #2a516b;
 }
 
+a, a:hover, a:focus, a:visited {
+	text-decoration: none;
+}
+
 .logo {
 	margin: 50px auto;
 	display: block;
