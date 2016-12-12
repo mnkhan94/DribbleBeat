@@ -1,12 +1,12 @@
 module.exports = function(app, passport) { 
 
+
+
 	// Homepage
 	app.get('/', (req, res) => {
-	  // db.collection('quotes').find().toArray((err, result) => {
-	  //   if (err) return console.log(err)
-	  //   res.render('home.handlebars', {games: result})
-	  // })
-	  res.render('home.handlebars')
+	  res.render('home.handlebars', {
+            user : req.user // get the user out of session and pass to template
+      });
 	})
 
     // =====================================
@@ -19,8 +19,12 @@ module.exports = function(app, passport) {
         res.render('login.handlebars', { message: req.flash('loginMessage') }); 
     });
 
-    // process the login form
-    // app.post('/login', do all our passport stuff here);
+	// process the login form
+    app.post('/login', passport.authenticate('local-login', {
+        successRedirect : '/profile', // redirect to the secure profile section
+        failureRedirect : '/login', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
 
     // =====================================
     // SIGNUP ==============================
@@ -33,7 +37,11 @@ module.exports = function(app, passport) {
     });
 
     // process the signup form
-    // app.post('/signup', do all our passport stuff here);
+    app.post('/signup', passport.authenticate('local-signup', {
+        successRedirect : '/profile', // redirect to the secure profile section
+        failureRedirect : '/signup', // redirect back to the signup page if there is an error
+        failureFlash : true // allow flash messages
+    }));
 
     // =====================================
     // PROFILE SECTION =====================

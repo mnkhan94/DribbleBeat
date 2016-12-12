@@ -22,28 +22,55 @@
 
 		<img src="img/logo.png" class="logo">
 
-		<div class="nav">
-			<div class="goto hvr-bob">
-				<a href="/">
-					<i class="fa fa-home fa-3x" aria-hidden="true"></i>
-					<p>Home</p>
-				</a>
+		{{#if user}}
+
+			<div class="nav">
+				<div class="goto hvr-bob">
+					<a href="/">
+						<i class="fa fa-home fa-3x" aria-hidden="true"></i>
+						<p>Home</p>
+					</a>
+				</div>
+				<div class="goto hvr-bob">
+					<a href="/add_game">
+						<i class="fa fa-futbol-o fa-3x" aria-hidden="true"></i>
+						<p>Add A Game</p>
+					</a>
+				</div>
+				<div class="goto hvr-bob">
+					<i class="fa fa-search fa-3x" aria-hidden="true"></i>
+					<p>Find A Game</p>
+				</div>
+				<div class="goto hvr-bob">
+					<i class="fa fa-users fa-3x" aria-hidden="true"></i>
+					<p>Friends</p>
+				</div>
 			</div>
-			<div class="goto hvr-bob">
-				<a href="/add_game">
-					<i class="fa fa-futbol-o fa-3x" aria-hidden="true"></i>
-					<p>Add A Game</p>
-				</a>
+
+		{{else}}
+			
+			<div class="nav" style="width: 208px !important">
+				<div class="goto hvr-bob">
+					<a href="/">
+						<i class="fa fa-home fa-3x" aria-hidden="true"></i>
+						<p>Home</p>
+					</a>
+				</div>
+				<div class="goto hvr-bob">
+					<a href="/login">
+						<i class="fa fa-sign-in fa-3x" aria-hidden="true"></i>
+						<p>Sign Up</p>
+					</a>
+				</div>
+				<div class="goto hvr-bob">
+					<a href="/signup">
+						<i class="fa fa-user-plus fa-3x" aria-hidden="true"></i>
+						<p>Sign Up</p>
+					</a>
+				</div>
 			</div>
-			<div class="goto hvr-bob">
-				<i class="fa fa-search fa-3x" aria-hidden="true"></i>
-				<p>Find A Game</p>
-			</div>
-			<div class="goto hvr-bob">
-				<i class="fa fa-users fa-3x" aria-hidden="true"></i>
-				<p>Friends</p>
-			</div>
-		</div>
+
+		{{/if}}
 
 
 		<div class="container">
@@ -52,4 +79,7 @@
 
 		<br>
 	</body>
+
+	<script>
+	</script>
 </html>

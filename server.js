@@ -14,7 +14,8 @@ var cookieParser = require('cookie-parser');
 var session      = require('express-session');
 
 
-// require('./config/passport')(passport); // pass passport for configuration
+require('./config/passport')(passport); // pass passport for configuration
+
 
 // set up our express application
     app.use(morgan('dev')); // log every request to the console
@@ -55,23 +56,18 @@ MongoClient.connect('mongodb://mnkhan:testing_password@ds119578.mlab.com:19578/d
   })
 })
 
-app.get('/', (req, res) => {
-  db.collection('quotes').find().toArray((err, result) => {
-    if (err) return console.log(err)
-    res.render('home.handlebars', {games: result})
-  })
-})
-
-
 app.get('/add_game', (req, res) => {
-  db.collection('quotes').find().toArray((err, result) => {
+  db.collection('games').find({"user_id": req.user.id}).toArray((err, result) => {
     if (err) return console.log(err)
-    res.render('add_game.handlebars', {games: result})
+    res.render('add_game.handlebars', {
+      user : req.user, // get the user out of session and pass to template
+      games: result
+    })
   })
 })
 
-app.post('/quotes', (req, res) => {
-  db.collection('quotes').save(req.body, (err, result) => {
+app.post('/games', (req, res) => {
+  db.collection('games').save(req.body, (err, result) => {
     if (err) return console.log(err)
 
     console.log('Saved to database')
@@ -79,9 +75,9 @@ app.post('/quotes', (req, res) => {
   })
 })
 
-app.delete('/quotes', (req, res) => {
+app.delete('/games', (req, res) => {
   console.log(req.body.id)
-  db.collection('quotes').remove( {_id: ObjectID(req.body.id)},
+  db.collection('games').remove( {_id: ObjectID(req.body.id)},
   (err, result) => {
     if (err) return res.send(500, err)
     res.send('The Game was deleted')

@@ -2,7 +2,7 @@
 	Add A Game
 </h1>
 
-<form action="/quotes" method="POST">
+<form action="/games" method="POST">
 	
 	<input type="text" placeholder="Enter Location" name="location" class="form-control" required>
 	
@@ -25,6 +25,8 @@
 			<input type="number" placeholder="Enter Maximum Amount of Players" name="maximum" min="2" class="form-control" required>
 		</div>
 	</div>
+
+	<input type="hidden" name="user_id" value="{{user._id}}">
 	
 	<button type="submit" class="btn btn-success btn-block">Submit</button>
 
@@ -34,28 +36,37 @@
 <br>
 
 <div>
-	{{#each games}}
-	  <div data-id='{{this._id}}' class="col-lg-4 col-md-6 col-sm-12 text-center box">
-	  	<div>
-		  		<h3>
-		  			{{this.date}}
-		  		</h3>
-	  			<p class="show-location">
-	  				{{this.location}}
-	  			</p>
-	  			<hr>
-	  			<h4>{{this.time}}</h4>
-	  			<p>
-	  				Min: <span>{{this.minimum}}</span>
-	  			</p>
-	  			<p>
-	  				Max: <span>{{this.maximum}}</span>
-	  			</p>
-				
-				<button class="btn btn-danger delete-this">Delete</button>
-	  	</div>
-	  </div>
-	{{/each}}
+	{{#if games}}
+		<h1 class="text-center">
+			<i>
+				My Games:
+			</i>
+		</h1>
+		{{#each games}}
+		  <div data-id='{{this._id}}' class="col-lg-4 col-md-6 col-sm-12 text-center box">
+		  	<div>
+			  		<h3>
+			  			{{this.date}}
+			  		</h3>
+		  			<p class="show-location">
+		  				{{this.location}}
+		  			</p>
+		  			<hr>
+		  			<h4>{{this.time}}</h4>
+		  			<p>
+		  				Min: <span>{{this.minimum}}</span>
+		  			</p>
+		  			<p>
+		  				Max: <span>{{this.maximum}}</span>
+		  			</p>
+
+					{{#if this.user_id}}
+							<button class="btn btn-danger delete-this">Cancel</button>
+					{{/if}}
+		  	</div>
+		  </div>
+		{{/each}}
+	{{/if}}
 </div>
 
 <script src="js/main.js"></script>
